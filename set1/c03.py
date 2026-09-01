@@ -16,12 +16,12 @@ def fixed_XOR(s1:str,s2:str) -> bytes:
 def hex_to_bytes(hex_string:str)->bytes:
     return bytes.fromhex(hex_string)
 
-def looped_XOR()-> dict:
+def looped_XOR(encrypted_string:bytes)-> dict:
     decrypted_and_score = {}
     for ch in range(256):
         res = []
         score = 0
-        for val in input_b:
+        for val in encrypted_string:
             new_char = val^ch
             res.append(new_char)
             if ((new_char == 32) 
@@ -31,7 +31,7 @@ def looped_XOR()-> dict:
         decrypted_and_score[ch] = (score, bytes(res))
     return decrypted_and_score
 
-decrypted_and_score = looped_XOR()
+decrypted_and_score = looped_XOR(input_b)
 high_score = float('-inf')
 max_message = b''
 for score,mes in decrypted_and_score.values():
