@@ -10,7 +10,7 @@ def repeating_key_XOR(key_string : str, input_string : str) -> str:
     for i,let in enumerate(input_string_b):
         key_index = i % key_length
         res.append(key_string_b[key_index] ^ let)
-    return str(bytes(res).hex())
+    return bytes(res).hex()
 
 print(repeating_key_XOR("ICE", input_s))
 
